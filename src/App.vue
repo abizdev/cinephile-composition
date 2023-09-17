@@ -1,13 +1,8 @@
-<template >
-  <div class="container">
-    
-  </div>
+<template>
+  <navbar />
+  <router-view />
 </template>
-<script>
-export default {
-  
-}
+
+<script setup>
+import Navbar from './components/Navbar.vue'
 </script>
-<style lang="">
-  
-</style>
