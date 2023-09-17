@@ -16,6 +16,9 @@ $i: var(--i);
   font-family: $r;
   font-weight: 400;
 }
+body {
+  background: #141414;
+}
 .container {
   @include container();
   min-height: 50px;
