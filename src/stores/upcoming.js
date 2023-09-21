@@ -13,7 +13,6 @@ export const useUpcoming = defineStore({
       try {
         const res = await axios.get(`${this.url}?api_key=${apiKey}&language=ru-Ru`)
         this.upcoming = res.data.results
-        console.log(this.upcoming);
       } catch (error) {
         console.error('Ошибка произошла приполучении предстоящих фильмов', error);
       }
