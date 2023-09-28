@@ -36,6 +36,8 @@ const slideNext = () => {
   clearTimeout(timeout)
   slide()
 }
-onMounted(() => timeout.value = setTimeout(() => slide(), 10000))
+onMounted(() => {
+  timeout = setTimeout(() => slide(), 10000)
+})
 
 </script>
