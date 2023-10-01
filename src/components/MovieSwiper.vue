@@ -15,6 +15,7 @@
         v-for="(item, key) in movies"
         :key="key"
         class="popular-slider__item"
+        :class="{active: selectedId == item.id}"
         @click="getInfo(item, key)"
       >
         <img :src="imgUrlFull + item.backdrop_path" alt="" class="popular-slider__item--img">
@@ -29,7 +30,6 @@
     
     <info-block
       :selectedId="selectedId"
-      :selectedItem="selectedItem"
       :index="index"
       category="movie"
       @close="selectedId = null"
@@ -39,32 +39,35 @@
 
 <script setup>
 import InfoBlock from './InfoBlock.vue';
-
+// Swiper modules
 import { Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import 'swiper/css';
 import 'swiper/css/navigation';
 
 import { ref, computed } from 'vue'
-import { usePopular } from '../stores/popular';
 import { imgUrl, imgUrlFull } from '../url'
+// Pinia states
+import { usePopular } from '../stores/popular';
+import { useInfoBlock } from '../stores/infoblock'
 
+// Swiper items (populars)
 const popularStore = usePopular()
 popularStore.getPopular('movie')
-
 const movies = computed(() => popularStore.movies)
 
+// Infoblock
+const infoBlockStore = useInfoBlock()
 
 let selectedId = ref(null)
-let selectedItem = ref(null)
 let index = ref(null)
-const getInfo = (item, key) => {
-  console.log('get info ', item);
-  selectedId.value = item.id
-  selectedItem.value = null
-  index.value = key
-}
 
+const getInfo = async (item, key) => {
+  selectedId.value = item.id
+  index.value = key
+  await infoBlockStore.getInfoBlock('movie', item.id)
+}
+// Swiper options
 const modules = ref([Navigation])
 let swiperOptions = ref({
   breakpoints: {
