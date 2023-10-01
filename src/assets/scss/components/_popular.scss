@@ -47,6 +47,70 @@
     }
   }
   &-info {
-    
+    width: 100%;
+    height: 0;
+    background: #ececee;
+    position: relative;
+    transition: height 0.3s;
+    margin-top: 30px;
+    overflow: hidden;
+    color: #ffffff;
+    &.active {
+      height: 700px;
+    }
+    &__close {
+      position: absolute;
+      top: 30px;
+      right: 30px;
+      width: 56px;
+      height: 56px;
+      border-radius: 40px;
+      border: none;
+      cursor: pointer;
+      background: rgba(20, 20, 20, 0.70);
+      color: #ffffff;
+      font-size: 30px;
+      z-index: 3;
+    }
+    &__content {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      &--img {
+        width: 60%;
+        height: 700px;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+      &--text {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        background: linear-gradient(90deg, #000000 40%, rgba(0, 0, 0, 0.2) 70%, rgba(0, 0, 0, 0.2) 90%);
+        padding: 50px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 30px;
+        h2 {}
+        p {}
+      }
+      &--tag {}
+      &--actors {}
+    }
+  }
+}
+.swiper-button {
+  &-disabled::after {
+    opacity: 0;
+  }
+  &-prev::after,
+  &-next::after {
+    font-size: 30px;
+    font-weight: 700;
+    color: #ffffff;
   }
 }

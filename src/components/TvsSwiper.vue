@@ -1,7 +1,7 @@
 <template>
   <div class="popular">
-    <router-link :to="{ name: 'films' }" class="popular-link">
-      Фильмы <fa icon="fa-solid fa-chevron-right" />
+    <router-link :to="{ name: 'serials' }" class="popular-link">
+      Сериалы <fa icon="fa-solid fa-chevron-right" />
     </router-link>
     <swiper
       :modules="modules"
@@ -9,37 +9,26 @@
       :navigation="true"
       :breakpoints="swiperOptions.breakpoints"
       class="popular-slider"
-      
     >
-      <swiper-slide
-        v-for="(item, key) in movies"
+      <swiper-slide class="popular-slider__item" 
+        v-for="(item, key) in tvs"
         :key="key"
-        class="popular-slider__item"
-        @click="getInfo(item, key)"
       >
-        <img :src="imgUrlFull + item.backdrop_path" alt="" class="popular-slider__item--img">
+      <img :src="imgUrlFull + item.backdrop_path" alt="" class="popular-slider__item--img" v-if="item.backdrop_path != null">
+      <img :src="imgUrlFull + item.poster_path" alt="" class="popular-slider__item--img" v-else-if="item.poster_path != null">
       </swiper-slide>
       <swiper-slide class="popular-slider__item">
-        <router-link :to="{ name: 'films' }" class="popular-slider__item--link">
+        <router-link :to="{ name: 'serials' }" class="popular-slider__item--link">
           <fa icon="fa-solid fa-chevron-right" />
-          <span>Все фильмы</span>
+          <span>Все сериалы</span>
         </router-link>
       </swiper-slide>
     </swiper>
     
-    <info-block
-      :selectedId="selectedId"
-      :selectedItem="selectedItem"
-      :index="index"
-      category="movie"
-      @close="selectedId = null"
-    />
   </div>
 </template>
 
 <script setup>
-import InfoBlock from './InfoBlock.vue';
-
 import { Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import 'swiper/css';
@@ -50,20 +39,9 @@ import { usePopular } from '../stores/popular';
 import { imgUrl, imgUrlFull } from '../url'
 
 const popularStore = usePopular()
-popularStore.getPopular('movie')
+popularStore.getPopular('tv')
 
-const movies = computed(() => popularStore.movies)
-
-
-let selectedId = ref(null)
-let selectedItem = ref(null)
-let index = ref(null)
-const getInfo = (item, key) => {
-  console.log('get info ', item);
-  selectedId.value = item.id
-  selectedItem.value = null
-  index.value = key
-}
+const tvs = computed(() => popularStore.tvs)
 
 const modules = ref([Navigation])
 let swiperOptions = ref({
