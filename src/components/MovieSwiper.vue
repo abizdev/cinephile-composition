@@ -30,9 +30,10 @@
     
     <info-block
       :selectedId="selectedId"
+      :selectedItem="selectedItem"
       :index="index"
       category="movie"
-      @close="selectedId = null"
+      @close="selectedId = selectedItem = null"
     />
   </div>
 </template>
@@ -47,6 +48,7 @@ import 'swiper/css/navigation';
 
 import { ref, computed } from 'vue'
 import { imgUrl, imgUrlFull } from '../url'
+
 // Pinia states
 import { usePopular } from '../stores/popular';
 import { useInfoBlock } from '../stores/infoblock'
@@ -58,14 +60,19 @@ const movies = computed(() => popularStore.movies)
 
 // Infoblock
 const infoBlockStore = useInfoBlock()
+const infoBlockItem = computed(() => infoBlockStore.movies)
 
 let selectedId = ref(null)
+let selectedItem = ref(null)
 let index = ref(null)
 
 const getInfo = async (item, key) => {
   selectedId.value = item.id
+  selectedItem.value = null
   index.value = key
   await infoBlockStore.getInfoBlock('movie', item.id)
+  selectedItem.value = infoBlockItem.value
+  console.log(selectedItem.value);
 }
 // Swiper options
 const modules = ref([Navigation])
