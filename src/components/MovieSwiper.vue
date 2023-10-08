@@ -60,7 +60,7 @@ const movies = computed(() => popularStore.movies)
 
 // Infoblock
 const infoBlockStore = useInfoBlock()
-const infoBlockItem = computed(() => infoBlockStore.movies)
+const infoBlockItem = computed(() => infoBlockStore.movieId)
 
 let selectedId = ref(null)
 let selectedItem = ref(null)

@@ -7,7 +7,7 @@
       <div class="popular-info__content" v-if="selectedItem">
         <img :src="imgUrlFull + selectedItem.backdrop_path" alt="" class="popular-info__content--img">
         <div class="popular-info__content--text">
-          <h2>{{ selectedItem.title }}</h2>
+          <h2>{{ selectedItem.title ? selectedItem.title : selectedItem.name }}</h2>
           <p>{{ selectedItem.overview }}</p>
           <ul class="popular-info__content--tag">
             <li v-for="(tag, key) in selectedItem.genres" :key="key">
