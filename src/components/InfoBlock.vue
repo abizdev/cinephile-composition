@@ -14,8 +14,10 @@
               {{ tag.name }},
             </li>
           </ul>
-          <div class="popular-info__content--actors"></div>
-          <btn-more />
+          <div class="popular-info__content--actors">
+            <!-- <actors :type="category" :id="selectedId" :count="4" /> -->
+          </div>
+          <btn-more :page="category" :id="selectedId" />
         </div>
       </div>
     </Transition>

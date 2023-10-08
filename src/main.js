@@ -15,9 +15,11 @@ import { fab } from '@fortawesome/free-brands-svg-icons'
 library.add(fas, far, fab)
 
 import BtnMore from './components/BtnMore.vue'
+import Actors from './components/Actors.vue'
 
 const app = createApp(App)
 app.component('btn-more', BtnMore)
+app.component('actors', Actors)
 app.component('fa', FontAwesomeIcon)
 app.use(createPinia())
 app.use(router)

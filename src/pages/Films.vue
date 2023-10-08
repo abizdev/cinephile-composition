@@ -1,7 +1,8 @@
 <template >
-  <h1>films</h1>
+  <content-info content="movie" />
 </template>
 
 <script setup>
+import ContentInfo from '../components/ContentInfo.vue';
 
 </script>

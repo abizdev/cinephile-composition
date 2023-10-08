@@ -6,7 +6,7 @@
         <div class="upcoming-item__content--text">
           <h1>{{ movie.title }}</h1>
           <p>{{ movie.overview || 'К данному фильму не добавлено описание' }}</p>
-          <btn-more />
+          <btn-more :id="movie.id" :page="movie" />
         </div>
       </div>
       <div class="upcoming-item__next" @click="$emit('slideNext')">
