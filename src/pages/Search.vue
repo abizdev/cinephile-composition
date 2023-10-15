@@ -1,7 +1,8 @@
 <template >
-  <h1>search</h1>
+  <search-input />
 </template>
 
 <script setup>
+import SearchInput from '../components/SearchInput.vue';
 
 </script>

@@ -8,7 +8,9 @@
       <div class="contentinfo-card" v-for="(item, key) in allContent" :key="key">
         <img :src="imgUrlFull + item.backdrop_path" alt="" class="contentinfo-card__img" v-if="item.backdrop_path != null">
         <img :src="imgUrlFull + item.poster_path" alt="" class="contentinfo-card__img" v-else>
-        <a href="#!" class="contentinfo-card__link">{{ item.title ? item.title : item.name }}</a>
+        <router-link :to="`/${content == 'movie' ? 'films' : 'serials'}/` + item.id" class="contentinfo-card__link">
+          {{ item.title ? item.title : item.name }}
+        </router-link>
       </div>
     </div>
   </div>
@@ -20,7 +22,7 @@ console.log(props.content);
 
 import { ref } from 'vue'
 import { useCinema } from '../stores/cinema'
-import { imgUrl, imgUrlFull } from '../url';
+import { imgUrlFull } from '../url';
 
 // Cinema store
 const cinemaStore = useCinema()
