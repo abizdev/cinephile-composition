@@ -15,7 +15,7 @@
             </li>
           </ul>
           <div class="popular-info__content--actors">
-            <!-- <actors :type="category" :id="selectedId" :count="4" /> -->
+            <actors :type="category" :id="selectedId" :count="4" />
           </div>
           <btn-more :page="category" :id="selectedId" />
         </div>

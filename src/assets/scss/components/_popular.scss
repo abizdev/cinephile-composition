@@ -144,7 +144,13 @@
           color: rgba(255, 255, 255, 0.6);
         }
       }
-      &--actors {}
+      &--actors {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        height: 123px;
+        gap: 15px;
+      }
     }
   }
 }
