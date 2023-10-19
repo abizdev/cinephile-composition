@@ -22,7 +22,6 @@ body {
 .container {
   @include container();
   min-height: 50px;
-  border: 1px solid red;
 }
 .btn-more {
   padding: 10px 15px;

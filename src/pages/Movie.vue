@@ -8,6 +8,4 @@ import CardInfo from '../components/CardInfo.vue'
 import { useRoute } from 'vue-router'
 
 const route = useRoute()
-
-console.log(route);
 </script>

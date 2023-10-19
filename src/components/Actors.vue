@@ -13,12 +13,8 @@ import { imgUrl, imgUrlFull } from '../url';
 const props = defineProps(['id', 'type', 'count'])
 const { id, type, count } = props
 
-console.log(id, type, count);
-
 const actorsStore = useActors()
 actorsStore.getActors(id, type, count)
 
 const actores = computed(() => type == 'movie' ? actorsStore.actorsMovie : actorsStore.actorsTv)
-console.log(actores);
-
 </script>
